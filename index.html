@@ -36,14 +36,14 @@
       <div id="timeForm" class="col-sm-10 needs-validation">
         <div class="row mx-5">
           <div class="col-sm-6 my-2">
-            <p class="lead">"I have currently worked _______ hours:"</p>
-            <p class="text-secondary">Some other stuff.</p>
+            <p class="lead">"When should I clock out?"</p>
+            <p class="text-secondary">Fill out the form to know when to clock out to make 40 or 80 hours.</p>
             <div class="row mb-3 g-3 align-items-center">
               <div class="col-auto">
                 <label for="inputHoursWorked" class="col-form-label">Hours worked:</label>
               </div>
               <div class="col-auto">
-                <input type="text" id="inputHoursWorked" class="form-control" aria-describedby="hoursWorkedHelp">
+                <input type="text" id="inputHoursWorked" class="form-control form-control-lg" aria-describedby="hoursWorkedHelp">
               </div>
               <div class="col-auto">
                 <span id="hoursWorkedHelp" class="form-text">
@@ -56,7 +56,7 @@
                 <label for="inputClockedIn" class="col-form-label">Time of last clock-in:</label>
               </div>
               <div class="col-auto">
-                <input type="time" name="inputClockedIn" id="inputClockedIn" required class="form-control" aria-describedby="clockedInHelp">
+                <input type="time" name="inputClockedIn" id="inputClockedIn" required class="form-control form-control-lg" aria-describedby="clockedInHelp">
               </div>
               <div class="col-auto">
                 <span id="clockedInHelp" class="form-text">
@@ -64,7 +64,7 @@
                 </span>
               </div>
             </div>
-            <button type="button" class="btn btn-primary teal-yellow" disabled id="reckonTime" name="reckonTime">Reckon</button>
+            <button type="button" class="btn btn-lg btn-teal-yellow" disabled id="reckonTime" name="reckonTime">Reckon</button>
           </div>
           <div class="col-sm-6 my-2">
             <textarea class="form-control" name="messageArea" id="messageArea" rows="10" disabled readonly></textarea>

@@ -19,6 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Intercept 'ENTER' key in fields
+  clckdIn.addEventListener("keyup", (e) => {
+    if(e.key === 'Enter') {
+      if(fieldsAreValid()) {
+        reckonTime();
+      }
+    } else {
+      validator();
+    }
+  });
   hrsWrkd.addEventListener("keyup", (e) => {
     if(e.key === 'Enter') {
       if(fieldsAreValid()) {
@@ -28,14 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
       validator();
     }
   });
-  clckdIn.addEventListener("keyup", (e) => {
-    if(e.key === 'Enter') {
-      if(fieldsAreValid()) {
-        reckonTime();
-      }
-    } else {
-      validator();
-    }
+
+  // Restrict hrsWrkd to 2 decimal places
+  hrsWrkd.addEventListener("input", () => {
+    var prev = hrsWrkd.getAttribute("data-prev");
+    prev = (prev != '') ? prev : '';
+    if(Math.round(hrsWrkd.value*100)/100!=hrsWrkd.value) hrsWrkd.value=prev;
+    hrsWrkd.setAttribute("data-prev",hrsWrkd.value); 
   });
 
   // Function validator
@@ -50,12 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // field has some value but is it a positive number?
       if(typeof(parseFloat(hrsWrkd.value)) === 'number' && hrsWrkd.value >= 0) {
-        console.log(typeof(hrsWrkd.value)); // DEUBG
         hrsWrkd.classList.remove("is-invalid");
         hrsWrkd.classList.add("is-valid");
         fieldsValid.hrsWrkd = 1;
         enableButton();
-        console.log(`fieldsValid: ${JSON.stringify(fieldsValid,null,2)}`); // DEBUG
+        if(hrsWrkd.value >=80) msgArea.value = "You are already over 80 hours. Go home, relax."; 
       } else {
         // field has some value but it is NOT a number
         console.log(typeof(hrsWrkd.value)); // DEBUG
@@ -63,14 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
         hrsWrkd.classList.add("is-invalid");
         fieldsValid.hrsWrkd = 0;
         enableButton();
-        console.log(`fieldsValid: ${JSON.stringify(fieldsValid,null,2)}`); // DEBUG
+        msgArea.value = "Hours worked must be a positive number."
       }
     } // End if/else hrsWrkd
     
     // clckdIn should be a time value
     // if the field is empty remove both validation classes
     if(clckdIn.value === '') {
-      console.log("time is empty");
+      console.log("Time is empty");
       clckdIn.classList.remove("is-valid");
       clckdIn.classList.remove("is-invalid");
       fieldsValid.clckdIn = 0;
@@ -78,19 +85,16 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // field has some value but is it a time?
       if(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(clckdIn.value)) {
-        console.log(clckdIn.value); // DEBUG
         clckdIn.classList.remove("is-invalid");
         clckdIn.classList.add("is-valid");
         fieldsValid.clckdIn = 1;
         enableButton();
-        console.log(`fieldsValid: ${JSON.stringify(fieldsValid,null,2)}`); // DEBUG
       } else {
         // field has some value but it is not a time
         clckdIn.classList.remove("is-valid");
         clckdIn.classList.add("is-invalid");
         fieldsValid.clckdIn = 0;
         enableButton();
-        console.log(`fieldsValid: ${JSON.stringify(fieldsValid,null,2)}`); // DEBUG
       }
     } // End if/else clckdIn
   } // End validator
@@ -114,26 +118,52 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function reckonTime
   function reckonTime() {
     console.log("Reckoning...");
-    if(hrsWrkd.value > 80) {
+    // var hrsWrkdRnd = Math.
+    if(hrsWrkd.value >= 80) {
       console.log("Already over 80");
-    } else {
-      // ********************* do something here
+      msgArea.value = "You have already reached 80 hours.\r\nGo home, relax.";
+    } else if(hrsWrkd.value < 0) {
       // This case shouldn't be possible due to validation but test for it anyways
-      if(hrsWrkd.value < 0) {
-        console.log("How you worked negative hours? ");
-      } else if(hrsWrkd.value > 80) { // Already over 80 hours
-        console.log("You are already over 80 hours. Go home, relax.");
-      } else if(hrsWrkd.value < 40) { // Less than 40, assume user is targeting 40 hours.
-        console.log("Must be week one.");
-        console.log(40-hrsWrkd.value);
-        console.log(80-hrsWrkd.value);
-        msgArea.innerHTML = "Must be week one.";
-      } else if(hrsWrkd.value < 80) {
-        console.log("Must be in week two.");  // Between 40 and 80 hours, assume targeting 80 hours.
-        console.log(80-hrsWrkd.value);
-      }
-      console.log("something about missing fields");
+      console.log("We've got a timetraveler over here.");
+      msgArea.value="How you worked negative hours?";
+    } else if(hrsWrkd.value < 28) {
+      // Less than 28, assume user still has multiple days left to work.
+      console.log("Less than 28 hours");
+      msgArea.value = `You are ${Number(40-hrsWrkd.value).toFixed(2)} hours shy of 40.\r\nCannot calculate your clock out time, try again later.`;
+    } else if(hrsWrkd.value >= 28 && hrsWrkd.value < 40) { 
+      // Less than 40, assume user is targeting 40 hours.
+      console.log("Must be week one.");
+      const cOut = reckonClkOut(Number(40-hrsWrkd.value).toFixed(2));
+      msgArea.value = `Must be week one.\r\nYou will have 40 hours at ${cOut}`;
+    } else if(hrsWrkd.value >= 40 && hrsWrkd.value < 68) {
+      // Less than 68, assume user still has multiple days left to work.
+      console.log("Less than 68 hours.");
+      msgArea.value = `You are ${Number(80-hrsWrkd.value).toFixed(2)} hours shy of 80.\r\nCannot calculate your clock out time, try again later.`;
+    } else if(hrsWrkd.value >= 68 && hrsWrkd.value < 80) {
+      // Between 40 and 80 hours, assume targeting 80 hours.
+      console.log("Must be in week two.");  
+      const cOut = reckonClkOut(Number(80-hrsWrkd.value).toFixed(2));
+      msgArea.value = `Must be in week two.\r\nYou will have 80 hours at ${cOut}`;
     }
   } // End reckonTime
+
+  // Function reckonClkOut
+  function reckonClkOut(hours) {
+    const cIn = new Date();
+    const [h, m] = clckdIn.value.split(":");
+    cIn.setHours(h);
+    cIn.setMinutes(m);
+    const hoursInMilliseconds = hours * 60 * 60 * 1000;
+    const cOut = new Date(cIn.valueOf() + hoursInMilliseconds);
+    return(humanTime(cOut));
+  } // End addTime
+
+  // Function humanTime
+  function humanTime(date) {
+    const ampm = date.getHours() > 11 ? "PM" : "AM";
+    const h = ((date.getHours() + 11) % 12 + 1).toString().padStart(2, 0);
+    const m = date.getMinutes().toString().padStart(2, 0);
+    return(`${h}:${m} ${ampm}`);
+  }
 
 });

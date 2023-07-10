@@ -71,6 +71,10 @@
     color: #c9ccd3;
     text-shadow: 2px 2px 3px #434343;
   }
+  .btn-teal-yellow {
+    background-color: #1380a1;
+    color: #eaff00;
+  }
   footer {
     color: #1380a1;
   }
