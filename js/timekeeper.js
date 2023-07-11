@@ -40,9 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Intercept touches
   clckdIn.addEventListener("touchend", () => {
-    msgArea.value = "touchend";
+    msgArea.value = "clkdIn touchend";
     validator();
   });
+  hrsWrkd.addEventListener("touchend", () => {
+    msgArea.value = "hrsWrkd touchend";
+    validator();
+  })
 
   // Restrict hrsWrkd to 2 decimal places
   hrsWrkd.addEventListener("input", () => {
