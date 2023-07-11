@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // clckdIn should be a time value
     // if the field is empty remove both validation classes
     if(clckdIn.value === '') {
+      msgArea.value = "clkdIn empty\r\n"+clckdIn.value;
       console.log("Time is empty");
       clckdIn.classList.remove("is-valid");
       clckdIn.classList.remove("is-invalid");
