@@ -2,9 +2,8 @@
     "deploy": {
       "type": "S3",
       "target": {
-        "master": "time.kylemunz.com",
+        "main": "time.kylemunz.com",
         "dev": "time-dev.kylemunz.com"
       }
     }
   }
-  
