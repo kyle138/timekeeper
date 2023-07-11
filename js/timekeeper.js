@@ -129,21 +129,21 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if(hrsWrkd.value < 28) {
       // Less than 28, assume user still has multiple days left to work.
       console.log("Less than 28 hours");
-      msgArea.value = `You are ${Number(40-hrsWrkd.value).toFixed(2)} hours shy of 40.\r\nCannot calculate your clock out time, try again later.`;
+      msgArea.value = `You are ${Number(40-hrsWrkd.value).toFixed(2)} hours shy of 40.\r\n\r\nCannot calculate your clock out time, try again later.`;
     } else if(hrsWrkd.value >= 28 && hrsWrkd.value < 40) { 
       // Less than 40, assume user is targeting 40 hours.
-      console.log("Must be week one.");
+      console.log("Assuming this is week one...");
       const cOut = reckonClkOut(Number(40-hrsWrkd.value).toFixed(2));
-      msgArea.value = `Must be week one.\r\nYou will have 40 hours at ${cOut}`;
+      msgArea.value = `Assuming this is week one.\r\n\r\nYou will have 40 hours at ${cOut}`;
     } else if(hrsWrkd.value >= 40 && hrsWrkd.value < 68) {
       // Less than 68, assume user still has multiple days left to work.
       console.log("Less than 68 hours.");
-      msgArea.value = `You are ${Number(80-hrsWrkd.value).toFixed(2)} hours shy of 80.\r\nCannot calculate your clock out time, try again later.`;
+      msgArea.value = `You are ${Number(80-hrsWrkd.value).toFixed(2)} hours shy of 80.\r\n\r\nCannot calculate your clock out time, try again later.`;
     } else if(hrsWrkd.value >= 68 && hrsWrkd.value < 80) {
       // Between 40 and 80 hours, assume targeting 80 hours.
-      console.log("Must be in week two.");  
+      console.log("Assuming this is week two...");  
       const cOut = reckonClkOut(Number(80-hrsWrkd.value).toFixed(2));
-      msgArea.value = `Must be in week two.\r\nYou will have 80 hours at ${cOut}`;
+      msgArea.value = `Assuming this is week two.\r\n\r\nYou will have 80 hours at ${cOut}`;
     }
   } // End reckonTime
 
