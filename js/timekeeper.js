@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clckdIn: 0
   };
 
-  // Intercept password button clicks
+  // Intercept button clicks
   timeBtn.addEventListener("click", () => {
     console.log("cleeeek");
     if(fieldsAreValid()) reckonTime();
@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       validator();
     }
+  });
+  
+  // Intercept touches
+  clckdIn.addEventListener("touchend", (e) => {
+    console.log(e);
   });
 
   // Restrict hrsWrkd to 2 decimal places
