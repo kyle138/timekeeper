@@ -95,12 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // field has some value but is it a time?
       if(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(clckdIn.value)) {
+        msgArea.value = "clkdin regex true";
         clckdIn.classList.remove("is-invalid");
         clckdIn.classList.add("is-valid");
         fieldsValid.clckdIn = 1;
         enableButton();
       } else {
         // field has some value but it is not a time
+        msgArea.value = "clkdin regex false\r\n"+clckdIn.value;
         clckdIn.classList.remove("is-valid");
         clckdIn.classList.add("is-invalid");
         fieldsValid.clckdIn = 0;
