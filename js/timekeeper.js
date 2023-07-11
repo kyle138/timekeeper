@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // Intercept touches
-  clckdIn.addEventListener("touchend", () => {
-    msgArea.value = "clkdIn touchend";
+  clckdIn.addEventListener("touchend", (3) => {
+    msgArea.value = "clkdIn touchend\r\n"+e;
     validator();
   });
   hrsWrkd.addEventListener("touchend", () => {
