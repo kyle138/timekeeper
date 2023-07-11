@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // Intercept touches
-  clckdIn.addEventListener("touchend", (3) => {
+  clckdIn.addEventListener("touchend", (e) => {
     msgArea.value = "clkdIn touchend\r\n"+e;
     validator();
   });
