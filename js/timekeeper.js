@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // Intercept touches
-  clckdIn.addEventListener("touchend", (e) => {
-    console.log(e);
+  clckdIn.addEventListener("touchend", () => {
+    validator();
   });
 
   // Restrict hrsWrkd to 2 decimal places
