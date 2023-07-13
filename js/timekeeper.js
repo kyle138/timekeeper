@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // debug
-  msgArea.value = "v5\r\n";
+  msgArea.value = "v6\r\n";
 
   // Intercept button clicks
   timeBtn.addEventListener("click", () => {
@@ -143,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function reckonTime
   function reckonTime() {
+    msgArea.value = msgArea.value + "Reckoning...\r\n"; // DEBUG
     console.log("Reckoning...");
     // var hrsWrkdRnd = Math.
     if(hrsWrkd.value >= 80) {
