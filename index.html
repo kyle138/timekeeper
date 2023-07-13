@@ -33,11 +33,12 @@
       <div class="col-sm-2 align-items-center">
         <i class="glyph fg-teal rd pink-yellow bi bi-stopwatch-fill"></i>
       </div>
-      <div id="timeForm" class="col-sm-10 needs-validation">
+      <div id="timeForm" class="col-sm-10 ">
         <div class="row mx-5">
           <div class="col-sm-6 my-2">
             <p class="lead">"When should I clock out?"</p>
             <p class="text-secondary">Fill out the form to know when to clock out to make 40 or 80 hours.</p>
+            <!-- Hours Worked -->
             <div class="row mb-3 g-3 align-items-center">
               <div class="col-auto">
                 <label for="inputHoursWorked" class="col-form-label">Hours worked:</label>
@@ -51,13 +52,15 @@
                 </span>
               </div>
             </div>
+            <!-- End Hours Worked -->
+
+            <!-- Clocked In -->
             <div class="row mb-3 g-3 align-items-center">
               <div class="col-auto">
                 <label for="inputClockedIn" class="col-form-label">Time of last clock-in:</label>
               </div>
-              <div class="input-group col-auto">
+              <div class="col-auto">
                 <input type="time" name="inputClockedIn" id="inputClockedIn" required class="form-control form-control-lg" aria-describedby="clockedInHelp">
-                <button class="btn btn-outline-secondary" type="button" id="clckInBtn">✓</button>
               </div>
               <div class="col-auto">
                 <span id="clockedInHelp" class="form-text">
@@ -65,7 +68,11 @@
                 </span>
               </div>
             </div>
+            <!-- End Clocked In -->
+
+            <!-- Submit -->
             <button type="button" class="btn btn-lg btn-teal-yellow" disabled id="reckonTime" name="reckonTime">Reckon</button>
+            <!-- End Submit -->
           </div>
           <div class="col-sm-6 my-2">
             <textarea class="form-control" name="messageArea" id="messageArea" rows="10" disabled readonly></textarea>

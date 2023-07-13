@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // debug
-  msgArea.value = "v3\r\n";
+  msgArea.value = "v4\r\n";
 
   // Intercept button clicks
   timeBtn.addEventListener("click", () => {
@@ -43,13 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Intercept touches
   clckdIn.addEventListener("touchend", (e) => {
-    msgArea.value = msgArea.value + "clkdIn touchend\r\n"+JSON.stringify(e)+"\r\n";
+    msgArea.value = msgArea.value + "clkdIn touchend\r\n"+JSON.stringify(e)+"\r\n"; // DEBUG
     validator();
   });
   hrsWrkd.addEventListener("touchend", () => {
     msgArea.value = msgArea.value + "hrsWrkd touchend\r\n";
     validator();
   })
+
+  // Focusout
+  clckdIn.addEventListener("focusout", (e) => {
+    msgArea.vaue = msgArea.value + "clckIn focusOut\r\n"+JSON.stringify(e)+"\r\n";  // DEBUG
+    validator();
+  });
 
   // Restrict hrsWrkd to 2 decimal places
   hrsWrkd.addEventListener("input", () => {
