@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } // End if/else hrsWrkd
     
-    console.log(clckdIn);
     // clckdIn should be a time value
     // if the field is empty remove both validation classes
     if(clckdIn.value === '') {
