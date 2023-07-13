@@ -36,42 +36,58 @@
       <div id="timeForm" class="col-sm-10 needs-validation">
         <div class="row mx-5">
           <div class="col-sm-6 my-2">
-            <p class="lead">"When should I clock out?"</p>
-            <p class="text-secondary">Fill out the form to know when to clock out to make 40 or 80 hours.</p>
+            <!-- Intro -->
+            <div class="row mb-3">
+              <p class="lead">"When should I clock out?"</p>
+              <p class="text-secondary">Fill out the form to calculate when to clock out to make exactly 40 or 80 hours.</p>
+            </div>
+            <!-- End Intro -->
+
             <!-- Hours Worked -->
-            <div class="row mb-3 g-3 align-items-center">
-              <div class="col-auto">
-                <label for="inputHoursWorked" class="col-form-label">Hours worked:</label>
+            <div class="row my-4 g-3 align-items-center">
+              <div class="row">
+                <div class="col-4">
+                  <label for="inputHoursWorked" class="col-form-label">Hours worked:</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" id="inputHoursWorked" class="form-control form-control-lg" aria-describedby="hoursWorkedHelp">
+                </div>
               </div>
-              <div class="col-auto">
-                <input type="text" id="inputHoursWorked" class="form-control form-control-lg" aria-describedby="hoursWorkedHelp">
-              </div>
-              <div class="col-auto">
-                <span id="hoursWorkedHelp" class="form-text">
-                  Total hours worked so far in decimal format: (eg 77.37 hours)
-                </span>
+              <div class="row">
+                <div class="col-auto mt-0">
+                  <span id="hoursWorkedHelp" class="form-text">
+                    Total hours worked so far in decimal format: (eg 77.37 hours)
+                  </span>
+                </div>
               </div>
             </div>
             <!-- End Hours Worked -->
 
             <!-- Clocked In -->
-            <div class="row mb-3 g-3 align-items-center">
-              <div class="col-auto">
-                <label for="inputClockedIn" class="col-form-label">Time of last clock-in:</label>
+            <div class="row my-4 g-3 align-items-center">
+              <div class="row">
+                <div class="col-4">
+                  <label for="inputClockedIn" class="col-form-label">Time of last clock-in:</label>
+                </div>
+                <div class="col-8">
+                  <input type="time" name="inputClockedIn" id="inputClockedIn" required class="form-control form-control-lg" aria-describedby="clockedInHelp">
+                </div>
               </div>
-              <div class="col-auto">
-                <input type="time" name="inputClockedIn" id="inputClockedIn" required class="form-control form-control-lg" aria-describedby="clockedInHelp">
-              </div>
-              <div class="col-auto">
-                <span id="clockedInHelp" class="form-text">
-                  Time of your last clock-in event: (eg 2:21 pm)
-                </span>
+              <div class="row">
+                <div class="col-auto mt-0">
+                  <span id="clockedInHelp" class="form-text">
+                    Time of your last clock-in event: (eg 2:21 pm)
+                  </span>
+                </div>
               </div>
             </div>
             <!-- End Clocked In -->
 
             <!-- Submit -->
-            <button type="button" class="btn btn-lg btn-teal-yellow" disabled id="reckonTime" name="reckonTime">Reckon</button>
+            <div class="row mt-5 mx-2 align-items-center">
+              <button type="button" class="btn btn-lg btn-teal-yellow" disabled id="reckonTime" name="reckonTime">Reckon</button>
+
+            </div>
             <!-- End Submit -->
           </div>
           <div class="col-sm-6 my-2">
