@@ -88,3 +88,6 @@
   footer a:hover {
     font-weight: bold;
   }
+  #messageArea {
+    font-size: xx-large;
+  }
