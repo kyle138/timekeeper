@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // debug
-  msgArea.value = "v4\r\n";
+  msgArea.value = "v5\r\n";
 
   // Intercept button clicks
   timeBtn.addEventListener("click", () => {
@@ -54,7 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Focusout
   clckdIn.addEventListener("focusout", (e) => {
     msgArea.vaue = msgArea.value + "clckIn focusOut\r\n"+JSON.stringify(e)+"\r\n";  // DEBUG
-    validator();
+    if(fieldsAreValid()) {
+      reckonTime();
+    } else {
+      validator();
+    }
   });
 
   // Restrict hrsWrkd to 2 decimal places
