@@ -84,6 +84,8 @@
   }
   footer a {
     text-decoration: none;
+    color: #eaff00;
+    text-shadow: 2px 2px 3px #ff09d0;
   }
   footer a:hover {
     font-weight: bold;
