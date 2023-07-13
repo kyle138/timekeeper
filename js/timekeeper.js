@@ -40,11 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Intercept touches
   clckdIn.addEventListener("touchend", (e) => {
-    msgArea.value = "clkdIn touchend\r\n"+e;
+    msgArea.value = msgArea.value + "clkdIn touchend\r\n"+e;
     validator();
   });
   hrsWrkd.addEventListener("touchend", () => {
-    msgArea.value = "hrsWrkd touchend";
+    msgArea.value = msgArea.value + "hrsWrkd touchend\r\n";
     validator();
   })
 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // clckdIn should be a time value
     // if the field is empty remove both validation classes
     if(clckdIn.value === '') {
-      msgArea.value = "clkdIn empty\r\n"+clckdIn.value;
+      msgArea.value = msgArea.value + "clkdIn empty\r\n"+clckdIn.value; // debug
       console.log("Time is empty");
       clckdIn.classList.remove("is-valid");
       clckdIn.classList.remove("is-invalid");
@@ -96,14 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // field has some value but is it a time?
       if(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(clckdIn.value)) {
-        msgArea.value = "clkdin regex true";
+        msgArea.value =msgArea.value +  "clkdin regex true\r\n";  // debug
         clckdIn.classList.remove("is-invalid");
         clckdIn.classList.add("is-valid");
         fieldsValid.clckdIn = 1;
         enableButton();
       } else {
         // field has some value but it is not a time
-        msgArea.value = "clkdin regex false\r\n"+clckdIn.value;
+        msgArea.value = msgArea.value + "clkdin regex false\r\n"+clckdIn.value; // debug
         clckdIn.classList.remove("is-valid");
         clckdIn.classList.add("is-invalid");
         fieldsValid.clckdIn = 0;
