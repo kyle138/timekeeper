@@ -135,6 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function reckonTime
   function reckonTime() {
     console.log("Reckoning...");
+    // Scroll to output
+    console.log(msgArea.offsetTop);
+    window.scrollTo({
+      left: 0,
+      top: msgArea.offsetTop,
+      behavior: "smooth" 
+    });
     // var hrsWrkdRnd = Math.
     if(hrsWrkd.value >= 80) {
       console.log("Already over 80");
