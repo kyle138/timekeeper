@@ -136,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function reckonTime() {
     console.log("Reckoning...");
     // Scroll to output
-    console.log(msgArea.offsetTop);
     window.scrollTo({
       left: 0,
       top: msgArea.offsetTop,
