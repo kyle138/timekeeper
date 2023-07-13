@@ -12,9 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clckdIn: 0
   };
 
-  // debug
-  msgArea.value = "v6\r\n";
-
   // Intercept button clicks
   timeBtn.addEventListener("click", () => {
     console.log("cleeeek");
@@ -42,18 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // Intercept touches
-  clckdIn.addEventListener("touchend", (e) => {
-    msgArea.value = msgArea.value + "clkdIn touchend\r\n"+JSON.stringify(e)+"\r\n"; // DEBUG
+  clckdIn.addEventListener("touchend", () => {
     validator();
   });
   hrsWrkd.addEventListener("touchend", () => {
-    msgArea.value = msgArea.value + "hrsWrkd touchend\r\n";
     validator();
   })
 
   // Focusout
-  clckdIn.addEventListener("focusout", (e) => {
-    msgArea.vaue = msgArea.value + "clckIn focusOut\r\n"+JSON.stringify(e)+"\r\n";  // DEBUG
+  clckdIn.addEventListener("focusout", () => {
     if(fieldsAreValid()) {
       reckonTime();
     } else {
@@ -100,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // clckdIn should be a time value
     // if the field is empty remove both validation classes
     if(clckdIn.value === '') {
-      msgArea.value = msgArea.value + "clkdIn empty\r\n"+clckdIn.value; // debug
       console.log("Time is empty");
       clckdIn.classList.remove("is-valid");
       clckdIn.classList.remove("is-invalid");
@@ -109,14 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // field has some value but is it a time?
       if(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(clckdIn.value)) {
-        msgArea.value =msgArea.value +  "clkdin regex true\r\n";  // debug
         clckdIn.classList.remove("is-invalid");
         clckdIn.classList.add("is-valid");
         fieldsValid.clckdIn = 1;
         enableButton();
       } else {
         // field has some value but it is not a time
-        msgArea.value = msgArea.value + "clkdin regex false\r\n"+clckdIn.value; // debug
         clckdIn.classList.remove("is-valid");
         clckdIn.classList.add("is-invalid");
         fieldsValid.clckdIn = 0;
@@ -143,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function reckonTime
   function reckonTime() {
-    msgArea.value = msgArea.value + "Reckoning...\r\n"; // DEBUG
     console.log("Reckoning...");
     // var hrsWrkdRnd = Math.
     if(hrsWrkd.value >= 80) {
