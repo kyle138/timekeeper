@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // debug
-  msgArea.value = "v1";
+  msgArea.value = "v2r\n";
 
   // Intercept button clicks
   timeBtn.addEventListener("click", () => {
