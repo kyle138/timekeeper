@@ -2,8 +2,8 @@
     "deploy": {
       "type": "S3",
       "target": {
-        "main": "time.kylemunz.com",
-        "dev": "time-dev.kylemunz.com"
+        "main": "www.80exact.com",
+        "dev": "dev.80exact.com"
       }
     }
   }
