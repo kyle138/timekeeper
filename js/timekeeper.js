@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     clckdIn: 0
   };
 
+  // debug
+  msgArea.value = "v1";
+
   // Intercept button clicks
   timeBtn.addEventListener("click", () => {
     console.log("cleeeek");
