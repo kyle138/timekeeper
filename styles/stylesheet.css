@@ -11,8 +11,8 @@
   /* Scale down glyphs on smaller screens */
   @media (max-width: 768px) {
     .glyph {
-      font-size: 25vh;
-      line-height: 25vh;
+      font-size: 10vh;
+      line-height: 10vh;
     }
   }
   @media (max-width: 576px) {
@@ -84,6 +84,8 @@
   }
   footer a {
     text-decoration: none;
+    color: #eaff00;
+    text-shadow: 2px 2px 3px #ff09d0;
   }
   footer a:hover {
     font-weight: bold;
